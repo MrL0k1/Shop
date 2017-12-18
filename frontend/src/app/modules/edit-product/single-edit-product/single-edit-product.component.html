@@ -1,0 +1,82 @@
+<div class="col-md-12 single-product">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="row">
+        <img src="{{product.image}}" alt="Niepoprawny link obrazu" class="img" height="150" width="250">
+      </div>
+      <span *ngIf="edit">Url obrazu: </span>
+      <input *ngIf="edit" id="image" name="image" [(ngModel)]="product.image" placeholder="Podaj url obrazku"
+             class="form-control input-md" required type="text">
+    </div>
+    <div class="col-md-5">
+      <div class="row">
+        <span>Nazwa: </span>
+        <span *ngIf="!edit">{{product.name}}</span>
+        <input *ngIf="edit" id="name" name="name" [(ngModel)]="product.name" placeholder="Podaj nazwe produktu"
+               class="form-control input-md" required type="text">
+      </div>
+      <div class="row">
+        <span>Kategoria: </span>
+        <span *ngIf="!edit">{{product.category}}</span>
+        <select *ngIf="edit" id="product_categorie" placeholder="Wybierz kategorie" [(ngModel)]="product.category"
+                name="product_categorie" class="form-control">
+          <option *ngFor="let cat of categ">{{cat}}</option>
+        </select>
+      </div>
+      <div class="row">
+        <span>Ilość dostępnych: </span>
+        <span *ngIf="!edit">{{product.count}}</span>
+        <input *ngIf="edit" id="count" name="count" [(ngModel)]="product.count" placeholder="Podaj ilość produktu"
+               class="form-control input-md" required type="number" min="1"
+               onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+      </div>
+      <div class="row">
+        <span>Cena: </span>
+        <span *ngIf="!edit">{{product.price | zl}}</span>
+        <input *ngIf="edit" id="price" name="price" [(ngModel)]="product.price" placeholder="Podaj cene produktu"
+               class="form-control input-md" required type="number" min="1"
+               onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+      </div>
+      <div class="row">
+        <span>Opis: </span>
+        <span *ngIf="!edit">{{product.description}}</span>
+        <textarea *ngIf="edit" class="form-control description" [(ngModel)]="product.description"
+                  id="product_description" placeholder="Podaj opis produktu" name="product_description"></textarea>
+      </div>
+      <div class="row promo">
+        <input *ngIf="discountOn" [(ngModel)]="time" placeholder="Podaj czas trwania promocji"
+               class="form-control input-md" required type="number" min="1">
+        <input *ngIf="discountOn" [(ngModel)]="percent" placeholder="Podaj oniżkę procentowo"
+               class="form-control input-md" required type="number" min="1">
+      </div>
+    </div>
+    <div class="col-md-3 btn-space">
+      <div class="row">
+        <div class="col-md-12">
+          <button *ngIf="!edit" class="btn btn-primary btn-pointer btn-size" (click)="setEdit()">Edytuj</button>
+        </div>
+        <div class="col-md-6 btn-single">
+          <button *ngIf="edit" class="btn btn-success btn-pointer btn-size" (click)="saveProduct()">Zapisz</button>
+        </div>
+        <div *ngIf="edit" class="col-md-6">
+          <button class="btn btn-warning btn-pointer btn-size" (click)="cancel()">Anuluj</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-danger btn-pointer btn-size" (click)="deleteProduct(product._id)">Usuń</button>
+        </div>
+      </div>
+      <div *ngIf="!discountOn" class="row">
+        <div class="col-md-12">
+          <button class="btn btn-success btn-pointer btn-size" (click)="discount()">Ustal promocje</button>
+        </div>
+      </div>
+      <div *ngIf="discountOn" class="row">
+        <div class="col-md-12">
+          <button class="btn btn-success btn-pointer btn-size" (click)="send()">Zatwierdz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

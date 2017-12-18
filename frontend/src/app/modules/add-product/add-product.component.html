@@ -1,0 +1,153 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <app-navigation></app-navigation>
+    </div>
+  </div>
+  <div class="row center-contener">
+    <div class="col-md-6">
+      <form class="form-horizontal sect">
+
+        <legend>DODAJ NOWY PRODUKT</legend>
+        <hr>
+
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="name">NAZWA PRODUKTU</label>
+          <div class="col-md-12">
+            <input id="name" name="name" [(ngModel)]="product.name" placeholder="Podaj nazwe produktu"
+                   class="form-control input-md" required type="text">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="product_categorie">NAZWA KATEGORI</label>
+          <div class="col-md-12">
+            <select id="product_categorie" [(ngModel)]="product.category" name="product_categorie" class="form-control">
+              <option *ngFor="let cat of categ">{{cat}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="product_price">Cena</label>
+          <div class="col-md-12">
+            <input id="product_price" [(ngModel)]="product.price" name="available_quantity" placeholder="Podaj cene"
+                   class="form-control input-md" required type="number" min="1"
+                   onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46 || event.charCode === 44'>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="available_quantity">ILOŚĆ</label>
+          <div class="col-md-12">
+            <input id="available_quantity" [(ngModel)]="product.count" name="available_quantity"
+                   placeholder="Podaj ilość" class="form-control input-md" required type="number" min="1"
+                   onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="product_weight">OBRAZ</label>
+          <div class="col-md-12">
+            <input id="product_weight" [(ngModel)]="product.image" name="product_weight"
+                   placeholder="Podaj link do obrazu" class="form-control input-md" required="" type="text">
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="product_description">OPIS PRODUKTU</label>
+          <div class="col-md-12">
+            <textarea class="form-control description" [(ngModel)]="product.description" id="product_description"
+                      placeholder="Podaj opis produktu" name="product_description"></textarea>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="col-md-6 space">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <h4>Nazwa</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <span *ngIf="product.name">{{product.name}}</span>
+            <span *ngIf="!product.name">Brak nazwy produktu</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <h4>Kategoria</h4>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <span *ngIf="product.category">{{product.category}}</span>
+            <span *ngIf="!product.category">Brak kategorii produktu</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <h4>Cena</h4>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <span *ngIf="product.price">{{product.price}}</span>
+            <span *ngIf="!product.price">Brak podanej ilości produktu</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <h4>Ilość</h4>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <span *ngIf="product.count">{{product.count}}</span>
+            <span *ngIf="!product.count">Brak podanej ilości produktu</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <h4>Opis</h4>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <span *ngIf="product.description">{{product.description}}</span>
+            <span *ngIf="!product.description">Brak opisu produktu</span>
+          </div>
+        </div>
+      </div>
+      <div class="row image">
+        <img *ngIf="product.image" src="{{product.image}}" alt="Niepoprawny link obrazu" class="img" height="200"
+             width="350">
+        <img *ngIf="!product.image"
+             src="https://www.electiondataservices.com/wp-content/uploads/2014/10/sorry-image-not-available.jpg"
+             alt="Brak dostępu do Internetu!" height="200" width="350" class="img">
+
+      </div>
+      <div class="row">
+        <button class="btn btn-success btn-pointer btn-buy"
+                [disabled]="!product.name || !product.category || !product.description || !product.count || !product.image"
+                (click)="createNewProduct(product)">
+          Dodaj produkt
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

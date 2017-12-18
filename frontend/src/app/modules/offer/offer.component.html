@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-2">
+    <app-menu (setCategoryEmitter)="setCategory($event)"
+              (setFilterTextEmitter)="setFilterText($event)"
+              (cleanFiltersEmitter)="clearFilters($event)"></app-menu>
+  </div>
+
+  <div class="col-md-10">
+    <div class="product" *ngFor="let product of offer |
+          categories:selectedCategories:filteredCount |
+          name:filteringText:filteredCount |
+          pagination:page:limit">
+      <app-product [product]="product"></app-product>
+    </div>
+
+    <app-pagination class="pag" [count]="filteredCount.count" [page]="page" [perPage]="limit" [pagesToShow]="5"
+                    (goPrev)="prevPage($event)" (goNext)="nextPage($event)" (goPage)="goToPage($event)"></app-pagination>
+
+    <div *ngIf="filteredCount.count == 0" class="emptyOffer">
+      <p>Brak produktów</p>
+    </div>
+  </div>
+</div>
+
+
+

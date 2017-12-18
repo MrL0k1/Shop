@@ -1,0 +1,75 @@
+<app-navigation></app-navigation>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+  <div class="row center-contener">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="title">Do realizacji</h2>
+        </div>
+      </div>
+      <div class="order" *ngFor="let nt of notRealized; let i = index">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-12">
+                {{nt.name}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                {{nt.address}}
+              </div>
+            </div>
+            <div *ngFor="let product of nt.products">
+              <div class="row">
+                <div class="col-md-12">
+                  <button class="btn btn-primary btn-pointer event">{{product.quantity}} X Produkt o id {{product._id}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <button class="btn btn-success realized btn-pointer" (click)="next(i, nt)">Zrealizuj <span class="fa fa-arrow-right"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="title">Zrealizowane</h2>
+        </div>
+      </div>
+      <div class="order" *ngFor="let r of realized">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-12">
+                {{r.name}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                {{r.address}}
+              </div>
+            </div>
+            <div *ngFor="let product of r.products; let i = index">
+              <div class="row">
+                <div class="col-md-12">
+                  <button class="btn btn-primary btn-pointer event">{{product.quantity}} X Produkt o id {{product._id}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <button class="btn btn-danger realized btn-pointer" (click)="previous(i, r)">Do realizacji <span class="fa fa-trash-o"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

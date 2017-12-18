@@ -1,0 +1,32 @@
+.center-contener {
+  text-align: center;
+}
+
+.button-size {
+  width: 100%;
+}
+
+.centered {
+  float: none;
+  margin: 0 auto;
+}
+
+input#userName.form-control.input-sm.chat-input {
+  margin-bottom: 10px;
+}
+
+input#userPassword.form-control.input-sm.chat-input {
+  margin-bottom: 10px;
+}
+
+.form-login-space {
+  margin-bottom: 80px;
+}
+
+.form-login {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}

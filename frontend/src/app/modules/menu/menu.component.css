@@ -1,0 +1,17 @@
+.btn-width {
+  width: 100%;
+}
+
+.btn-margin {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.filtering-input {
+  text-align: center;
+  margin: 5px 0;
+}
+
+.menu {
+  padding-top: 5px;
+}

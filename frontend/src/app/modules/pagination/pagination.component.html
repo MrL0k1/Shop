@@ -1,0 +1,13 @@
+<nav aria-label="...">
+  <ul class="pagination" *ngIf="count > 0">
+    <li class="page-item">
+      <button class="page-link btn-pointer" (click)="onPrev()">Poprzedni</button>
+    </li>
+    <li *ngFor="let pageNum of getPages()" class="page-item click">
+      <button class="page-link btn-pointer" (click)="onPage(pageNum)">{{pageNum}}</button>
+    </li>
+    <li class="page-item">
+      <button class="page-link btn-pointer" [disabled]="next" (click)="onNext()">Następny</button>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,12 @@
+<div class="menu">
+  <input type="text" class="form-control filtering-input" name="filteringText" [(ngModel)]="filteringText"
+         (ngModelChange)="onFilteringTextChange($event)" placeholder="Szukaj produktu">
+  <div *ngFor="let category of categories">
+    <button type="button" class="btn btn-width btn-margin btn-pointer"
+            [ngClass]="{'btn-success': category.selected, 'btn-outline-success': !category.selected}"
+            (click)="setCategory(category)">
+      {{category.name}}
+    </button>
+  </div>
+</div>
+

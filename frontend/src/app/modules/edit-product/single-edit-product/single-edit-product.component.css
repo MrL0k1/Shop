@@ -1,0 +1,39 @@
+.btn-size {
+  width: 100%;
+}
+
+.single-product {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.img {
+  margin: 10px;
+}
+
+.btn-space {
+  margin-top: 50px;
+}
+
+input {
+  margin-bottom: 3px;
+}
+
+select {
+  margin-bottom: 3px;
+}
+
+.description {
+  min-height: 50px;
+}
+
+.btn-single {
+  margin-bottom: 2px;
+}
+
+.promo {
+  margin-top: 20px;
+}

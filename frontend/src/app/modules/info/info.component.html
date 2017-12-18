@@ -1,0 +1,27 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 *ngIf="!discount.end" class="modal-title" id="exampleModalLabel">SUPER PROMOCJA - {{ discount.name || ''
+          }}</h5>
+        <h5 *ngIf="discount.end" class="modal-title" id="exampleModalLabel2">KONIEC PROMOCJI - {{ discount.name ||
+          ''}}</h5>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          {{ discount.name || ' '}}
+        </div>
+        <div class="row">
+          Nowa cena {{ discount.price || ' '}}zł
+        </div>
+        <div *ngIf="discount.percent" class="row">
+          Zniżka o {{ discount.percent || ' '}}%
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
